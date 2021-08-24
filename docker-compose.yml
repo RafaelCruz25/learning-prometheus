@@ -1,0 +1,15 @@
+version: '3.2'
+services:
+  db:
+    image: postgres
+    container_name: prometheus
+    environment:
+      POSTGRES_USER: prometheus
+      POSTGRES_PASSWORD: prometheus
+    ports:
+      - "5432:5432"
+    volumes:
+      - prometheus_data:/var/lib/prometheus
+
+volumes:
+  prometheus_data:

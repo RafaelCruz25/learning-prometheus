@@ -1,1 +1,27 @@
+spring:
+  application:
+    name: learning-prometheus
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/prometheus
+    username: prometheus
+    password: prometheus
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,env
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            percentiles-histogram: true
+    data:
+      repository:
+        autotime:
+          percentiles-histogram: true

@@ -23,6 +23,10 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.flywaydb:flyway-core")
+	runtimeOnly("org.postgresql:postgresql")
+
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
