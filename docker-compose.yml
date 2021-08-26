@@ -8,8 +8,3 @@ services:
       POSTGRES_PASSWORD: prometheus
     ports:
       - "5432:5432"
-    volumes:
-      - prometheus_data:/var/lib/prometheus
-
-volumes:
-  prometheus_data:

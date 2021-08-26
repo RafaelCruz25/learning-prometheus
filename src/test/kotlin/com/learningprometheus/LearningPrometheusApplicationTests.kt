@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class LearningPrometheusApplicationTests {
 
 	@Test
+	@Suppress("EmptyFunctionBlock")
 	fun contextLoads() {
 	}
-
 }

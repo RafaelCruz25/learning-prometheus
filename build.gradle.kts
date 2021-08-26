@@ -3,8 +3,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.5.2"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+
 	kotlin("jvm") version "1.5.20"
 	kotlin("plugin.spring") version "1.5.20"
+	kotlin("plugin.jpa") version "1.5.20"
+
+	id("io.gitlab.arturbosch.detekt") version "1.17.0"
 }
 
 group = "com."
@@ -17,6 +21,7 @@ repositories {
 
 val springCloudVersion = "2020.0.3"
 val swaggerVersion = "3.0.0"
+val detektVersion = "1.17.0"
 
 dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -37,6 +42,8 @@ dependencies {
 	implementation("io.micrometer:micrometer-registry-prometheus")
 	implementation("io.github.openfeign:feign-httpclient")
 
+	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -55,4 +62,9 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+detekt {
+	input = files("src/main/kotlin", "src/test/kotlin")
+	config = files("custom-detekt.yml")
 }
